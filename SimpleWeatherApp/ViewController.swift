@@ -33,6 +33,15 @@ class ViewController: UIViewController {
     var weatherTempF: Double?
     var locationStr: String?
     
+    // configurations used for changing unit button styles
+    let unitBtnTextTransformer = UIConfigurationTextAttributesTransformer { incoming in
+        var outgoing = incoming
+        outgoing.font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
+        return outgoing
+    }
+    var btnSelectedStyle: UIButton.Configuration = .filled()
+    var btnDeselectedStyle: UIButton.Configuration = .gray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -44,18 +53,20 @@ class ViewController: UIViewController {
         locationMgr = CLLocationManager()
         locationMgr?.delegate = self
         
-        // TODO: repurpose this into swapping the temperature unit button styles
-        let btnTextTransformer = UIConfigurationTextAttributesTransformer { incoming in
-            var outgoing = incoming
-            outgoing.font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
-            return outgoing
-        }
-        tempFButton.configuration = .filled()
-        tempFButton.configuration?.title = "F"
-        tempFButton.configuration?.titleTextAttributesTransformer = btnTextTransformer
-        tempCButton.configuration = .gray()
-        tempCButton.configuration?.title = "C"
-        tempCButton.configuration?.titleTextAttributesTransformer = btnTextTransformer
+        // set up style configs for unit toggle buttons
+        // this has to be done in a more complex way in code because there is not
+        // an easy way to switch the "Style" property of the buttons, like we can
+        // in the storyboard config
+        btnSelectedStyle.titleTextAttributesTransformer = unitBtnTextTransformer
+        btnDeselectedStyle.titleTextAttributesTransformer = unitBtnTextTransformer
+        
+        var initCBtnStyle = btnSelectedStyle
+        initCBtnStyle.title = "C"
+        var initFBtnStyle = btnDeselectedStyle
+        initFBtnStyle.title = "F"
+        
+        tempCButton.configuration = initCBtnStyle
+        tempFButton.configuration = initFBtnStyle
     }
 
     /// Triggered when the C unit button is pressed, switches display to Celsius.
@@ -140,13 +151,26 @@ class ViewController: UIViewController {
             return
         }
         
+        // create style config for both buttons
+        var newCBtnStyle: UIButton.Configuration
+        var newFBtnStyle: UIButton.Configuration
         if (inCelsius) {
-            // set display to Celsius
-            
+            // set Celsius selected
+            newCBtnStyle = btnSelectedStyle
+            newFBtnStyle = btnDeselectedStyle
         } else {
-            // set display to Fahrenheit
-            
+            // set Fahrenheit selected
+            newCBtnStyle = btnDeselectedStyle
+            newFBtnStyle = btnSelectedStyle
         }
+        newCBtnStyle.title = "C"
+        newFBtnStyle.title = "F"
+        
+        // apply styles to buttons
+        tempCButton.configuration = newCBtnStyle
+        tempFButton.configuration = newFBtnStyle
+        
+        // update display mode flag and refresh UI
         displayTempInC = inCelsius
         updateWeatherDisplay()
     }
@@ -188,6 +212,8 @@ extension ViewController: CLLocationManagerDelegate {
             return
         }
         
+        // create the dataTask for querying the API
+        // takes a callback function to be executed when the task finishes, as it is async
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             // report any errors and quit if they exist
             if let fetchErr = error {
@@ -208,7 +234,7 @@ extension ViewController: CLLocationManagerDelegate {
                 // attempt to decode the data
                 let decodedData: WeatherAPIResponse = try jsonDecoder.decode(WeatherAPIResponse.self, from: data)
                 
-                // show weather info
+                // pull out weather info from data
                 let code = decodedData.current.condition.code
                 let weatherDispName = decodedData.current.condition.text
                 let tempC = decodedData.current.temp_c
@@ -216,6 +242,8 @@ extension ViewController: CLLocationManagerDelegate {
                 let city = decodedData.location.name
                 let region = decodedData.location.region
                 let country = decodedData.location.country
+                
+                // update the UI with the info
                 // use the DispatchQueue to update on the main thread
                 DispatchQueue.main.async {
                     self.setShowWeatherInfo(true)
@@ -227,11 +255,13 @@ extension ViewController: CLLocationManagerDelegate {
             }
         }
         
+        // start the task to hit the API
         dataTask.resume()
     }
 }
 
 /// Structs for decoding the API response data.
+/// These match the structure of the JSON data returned by the API.
 
 struct WeatherCondition: Decodable {
     let text: String
