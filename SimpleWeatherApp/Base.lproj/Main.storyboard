@@ -91,7 +91,7 @@
                                     <constraint firstAttribute="height" constant="110" id="RpB-8h-GaG"/>
                                 </constraints>
                             </stackView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rd-PJ-pMK">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rd-PJ-pMK">
                                 <rect key="frame" x="20" y="529" width="353" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" name="AccentColor"/>
@@ -122,7 +122,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mXe-h4-spz"/>
                     <connections>
-                        <outlet property="curCityLabel" destination="4rd-PJ-pMK" id="Mvj-ov-VDb"/>
+                        <outlet property="curLocLabel" destination="4rd-PJ-pMK" id="Mvj-ov-VDb"/>
                         <outlet property="curTempLabel" destination="Xbh-pE-zci" id="uFH-Pr-CXK"/>
                         <outlet property="curTempStackView" destination="p1y-yv-9fI" id="zDJ-a9-vsa"/>
                         <outlet property="curWeatherImageView" destination="Klg-BF-AT2" id="ccy-gV-mMZ"/>
