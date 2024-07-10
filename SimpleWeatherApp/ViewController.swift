@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController {
+    // MARK: - outlets and class variables
 
     // weather display Views
     @IBOutlet weak var curWeatherLabel: UILabel!
@@ -42,6 +43,8 @@ class ViewController: UIViewController {
     var btnSelectedStyle: UIButton.Configuration = .filled()
     var btnDeselectedStyle: UIButton.Configuration = .gray()
     
+    // MARK: - VC load
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -68,16 +71,8 @@ class ViewController: UIViewController {
         tempCButton.configuration = initCBtnStyle
         tempFButton.configuration = initFBtnStyle
     }
-
-    /// Triggered when the C unit button is pressed, switches display to Celsius.
-    @IBAction func tempCBtnPressed() {
-        setTempUnit(inCelsius: true)
-    }
     
-    /// Triggered when the F unit button is pressed, switches display to Fahrenheit.
-    @IBAction func tempFBtnPressed() {
-        setTempUnit(inCelsius: false)
-    }
+    // MARK: - location functions
     
     /// Function for when location button is pressed.
     /// Requests location permissions (if necessary) and gets/displays the weather at the user's location.
@@ -106,6 +101,8 @@ class ViewController: UIViewController {
         locationMgr?.stopUpdatingLocation()
     }
     
+    // MARK: - weather UI functions
+    
     /// Show or hide the weather info displays.
     func setShowWeatherInfo(_ show: Bool) {
         curWeatherLabel.isHidden = !show
@@ -127,6 +124,13 @@ class ViewController: UIViewController {
         updateWeatherDisplay()
     }
     
+    /// Given a weather code from the API, return a tuple with the display-friendly name and an icon.
+    func lookupWeatherCode(_ code: Int) -> UIImage? {
+        // TODO: implement
+        
+        return UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal)
+    }
+    
     /// Update the display views for the weather info with the info in the class.
     func updateWeatherDisplay() {
         // update the display
@@ -136,11 +140,16 @@ class ViewController: UIViewController {
         curLocLabel.text = locationStr
     }
     
-    /// Given a weather code from the API, return a tuple with the display-friendly name and an icon.
-    func lookupWeatherCode(_ code: Int) -> UIImage? {
-        // TODO: implement
-        
-        return UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal)
+    // MARK: - temperature unit functions
+    
+    /// Triggered when the C unit button is pressed, switches display to Celsius.
+    @IBAction func tempCBtnPressed() {
+        setTempUnit(inCelsius: true)
+    }
+    
+    /// Triggered when the F unit button is pressed, switches display to Fahrenheit.
+    @IBAction func tempFBtnPressed() {
+        setTempUnit(inCelsius: false)
     }
     
     /// Set the temperature unit.
@@ -175,6 +184,8 @@ class ViewController: UIViewController {
         updateWeatherDisplay()
     }
 }
+
+// MARK: - LocationManager delegate functions
 
 extension ViewController: CLLocationManagerDelegate {
     /// Delegate function for location authorization changes.
@@ -259,6 +270,8 @@ extension ViewController: CLLocationManagerDelegate {
         dataTask.resume()
     }
 }
+
+// MARK: - weather API JSON structs
 
 /// Structs for decoding the API response data.
 /// These match the structure of the JSON data returned by the API.
