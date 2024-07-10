@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     // current weather/location info
     var weatherDispName: String?
     var weatherIcon: UIImage?
-    var tempInC: Bool = true
+    var displayTempInC: Bool = true
     var weatherTempC: Double?
     var weatherTempF: Double?
     var locationStr: String?
@@ -43,6 +43,19 @@ class ViewController: UIViewController {
         // set up location manager
         locationMgr = CLLocationManager()
         locationMgr?.delegate = self
+        
+        // TODO: repurpose this into swapping the temperature unit button styles
+        let btnTextTransformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
+            return outgoing
+        }
+        tempFButton.configuration = .filled()
+        tempFButton.configuration?.title = "F"
+        tempFButton.configuration?.titleTextAttributesTransformer = btnTextTransformer
+        tempCButton.configuration = .gray()
+        tempCButton.configuration?.title = "C"
+        tempCButton.configuration?.titleTextAttributesTransformer = btnTextTransformer
     }
 
     /// Triggered when the C unit button is pressed, switches display to Celsius.
@@ -108,7 +121,7 @@ class ViewController: UIViewController {
         // update the display
         curWeatherLabel.text = weatherDispName
         curWeatherImageView.image = weatherIcon
-        curTempLabel.text = tempInC ? String(weatherTempC ?? 0) : String(weatherTempF ?? 0)
+        curTempLabel.text = displayTempInC ? String(weatherTempC ?? 0) : String(weatherTempF ?? 0)
         curLocLabel.text = locationStr
     }
     
@@ -122,11 +135,20 @@ class ViewController: UIViewController {
     /// Set the temperature unit.
     /// If inCelsius is true, set to Celsius. Otherwise, set to Fahrenheit.
     func setTempUnit(inCelsius: Bool) {
+        // if we're already displaying in the requested mode, do nothing
+        if (displayTempInC == inCelsius) {
+            return
+        }
+        
         if (inCelsius) {
+            // set display to Celsius
             
         } else {
+            // set display to Fahrenheit
             
         }
+        displayTempInC = inCelsius
+        updateWeatherDisplay()
     }
 }
 
