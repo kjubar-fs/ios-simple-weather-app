@@ -66,6 +66,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="C">
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="24"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="tempCBtnPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="jC9-2M-lRg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPo-bF-wyZ">
                                                 <rect key="frame" x="0.0" y="60" width="50" height="50"/>
@@ -77,6 +80,9 @@
                                                 <buttonConfiguration key="configuration" style="tinted" title="F">
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="24"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="tempFBtnPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="tqd-zW-Je2"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -104,6 +110,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mXe-h4-spz"/>
+                    <connections>
+                        <outlet property="curTempLabel" destination="Xbh-pE-zci" id="uFH-Pr-CXK"/>
+                        <outlet property="curTempStackView" destination="p1y-yv-9fI" id="zDJ-a9-vsa"/>
+                        <outlet property="curWeatherImageView" destination="Klg-BF-AT2" id="ccy-gV-mMZ"/>
+                        <outlet property="curWeatherLabel" destination="bi8-PU-mZU" id="HPK-Oj-HhQ"/>
+                        <outlet property="tempCButton" destination="E7D-JQ-ptM" id="vOP-xL-2dC"/>
+                        <outlet property="tempFButton" destination="XPo-bF-wyZ" id="zfi-dr-eOU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
