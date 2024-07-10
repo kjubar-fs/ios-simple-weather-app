@@ -91,6 +91,12 @@
                                     <constraint firstAttribute="height" constant="110" id="RpB-8h-GaG"/>
                                 </constraints>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rd-PJ-pMK">
+                                <rect key="frame" x="20" y="529" width="353" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="bgColor"/>
@@ -98,9 +104,14 @@
                             <constraint firstItem="lQG-at-FkY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3DL-6H-NAk"/>
                             <constraint firstItem="p1y-yv-9fI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5HA-QE-Jea"/>
                             <constraint firstItem="bi8-PU-mZU" firstAttribute="centerY" secondItem="pGf-U3-0zW" secondAttribute="centerY" id="8YB-7s-aVU"/>
+                            <constraint firstItem="4rd-PJ-pMK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="D7A-Em-TpE"/>
+                            <constraint firstItem="p1y-yv-9fI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kqr-Hn-2AZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bi8-PU-mZU" secondAttribute="trailing" constant="32" id="LML-HM-3Nd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4rd-PJ-pMK" secondAttribute="trailing" constant="20" id="PMf-oH-yAP"/>
                             <constraint firstItem="Klg-BF-AT2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TA0-Ti-7TD"/>
+                            <constraint firstItem="4rd-PJ-pMK" firstAttribute="top" secondItem="p1y-yv-9fI" secondAttribute="bottom" constant="20" id="VBj-u4-jOO"/>
                             <constraint firstAttribute="bottom" secondItem="lQG-at-FkY" secondAttribute="bottom" id="YU6-x3-rtm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p1y-yv-9fI" secondAttribute="trailing" constant="20" id="btb-g8-lHe"/>
                             <constraint firstItem="lQG-at-FkY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="eQm-le-Be2"/>
                             <constraint firstItem="pGf-U3-0zW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="fEb-It-6sc"/>
                             <constraint firstItem="p1y-yv-9fI" firstAttribute="top" secondItem="Klg-BF-AT2" secondAttribute="bottom" constant="40" id="kq8-IK-wV1"/>
@@ -111,6 +122,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mXe-h4-spz"/>
                     <connections>
+                        <outlet property="curCityLabel" destination="4rd-PJ-pMK" id="Mvj-ov-VDb"/>
                         <outlet property="curTempLabel" destination="Xbh-pE-zci" id="uFH-Pr-CXK"/>
                         <outlet property="curTempStackView" destination="p1y-yv-9fI" id="zDJ-a9-vsa"/>
                         <outlet property="curWeatherImageView" destination="Klg-BF-AT2" id="ccy-gV-mMZ"/>
