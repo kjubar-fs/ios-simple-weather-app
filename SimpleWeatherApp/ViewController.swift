@@ -28,7 +28,9 @@ class ViewController: UIViewController {
     // current weather/location info
     var weatherDispName: String?
     var weatherIcon: UIImage?
-    var weatherTemp: Double?
+    var tempInC: Bool = true
+    var weatherTempC: Double?
+    var weatherTempF: Double?
     var locationStr: String?
     
     override func viewDidLoad() {
@@ -89,14 +91,12 @@ class ViewController: UIViewController {
     }
     
     /// Set the data in the class and refresh weather info displays.
-    func setWeatherInfo(weatherCode: Int, temp: Double, location: String) {
-        // get the display info for the weather code
-        let (name, icon) = lookupWeatherCode(weatherCode)
-        
+    func setWeatherInfo(weatherCode: Int, weatherString: String, tempC: Double, tempF: Double, location: String) {
         // store in variables
-        weatherDispName = name
-        weatherIcon = icon
-        weatherTemp = temp
+        weatherDispName = weatherString
+        weatherIcon = lookupWeatherCode(weatherCode)
+        weatherTempC = tempC
+        weatherTempF = tempF
         locationStr = location
         
         // update display
@@ -108,15 +108,15 @@ class ViewController: UIViewController {
         // update the display
         curWeatherLabel.text = weatherDispName
         curWeatherImageView.image = weatherIcon
-        curTempLabel.text = String(weatherTemp ?? 0)
+        curTempLabel.text = tempInC ? String(weatherTempC ?? 0) : String(weatherTempF ?? 0)
         curLocLabel.text = locationStr
     }
     
     /// Given a weather code from the API, return a tuple with the display-friendly name and an icon.
-    func lookupWeatherCode(_ code: Int) -> (name: String, icon: UIImage?) {
+    func lookupWeatherCode(_ code: Int) -> UIImage? {
         // TODO: implement
         
-        return (name: "Sunny", icon: UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal))
+        return UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal)
     }
     
     /// Set the temperature unit.
@@ -160,18 +160,75 @@ extension ViewController: CLLocationManagerDelegate {
             return
         }
         
-        // use a Geocoder to be able to get city
-        // this is asynchronous and has a callback for when the operation is complete
-        CLGeocoder().reverseGeocodeLocation(location) { [weak self] results, err in
-            // bind a strong self reference in this closure, since it's an async callback
-            // like how we did with Firebase auth
-            guard let strongSelf = self, let resultLoc = results?.first else {
+        // attempt to make the API call URL
+        // if we can't make a URL for the API, return because we can't do anything
+        guard let url = URL(string: "https://api.weatherapi.com/v1/current.json?key=b8346bfb465743ed8f2172517241007&q=\(location.coordinate.latitude),\(location.coordinate.longitude)") else {
+            return
+        }
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+            // report any errors and quit if they exist
+            if let fetchErr = error {
+                print("Error calling API: \(fetchErr)")
                 return
             }
             
-            // show weather info
-            strongSelf.setShowWeatherInfo(true)
-            strongSelf.setWeatherInfo(weatherCode: 1, temp: 18.0, location: "\(resultLoc.locality ?? ""), \(resultLoc.administrativeArea ?? ""), \(resultLoc.country ?? "")")
+            // quit if we got no data
+            guard let data = data else {
+                return
+            }
+            
+            // TODO: quit if API responds with not 200-299
+            
+            // create a JSON decoder for reading the response
+            let jsonDecoder = JSONDecoder()
+            do {
+                // attempt to decode the data
+                let decodedData: WeatherAPIResponse = try jsonDecoder.decode(WeatherAPIResponse.self, from: data)
+                
+                // show weather info
+                let code = decodedData.current.condition.code
+                let weatherDispName = decodedData.current.condition.text
+                let tempC = decodedData.current.temp_c
+                let tempF = decodedData.current.temp_f
+                let city = decodedData.location.name
+                let region = decodedData.location.region
+                let country = decodedData.location.country
+                // use the DispatchQueue to update on the main thread
+                DispatchQueue.main.async {
+                    self.setShowWeatherInfo(true)
+                    self.setWeatherInfo(weatherCode: code, weatherString: weatherDispName, tempC: tempC, tempF: tempF, location: "\(city), \(region), \(country)")
+                }
+            } catch {
+                // if we fail decoding, log the error
+                print(error)
+            }
         }
+        
+        dataTask.resume()
     }
+}
+
+/// Structs for decoding the API response data.
+
+struct WeatherCondition: Decodable {
+    let text: String
+    let code: Int
+}
+
+struct CurrentWeather: Decodable {
+    let temp_c: Double
+    let temp_f: Double
+    let condition: WeatherCondition
+}
+
+struct LocationData: Decodable {
+    let name: String
+    let region: String
+    let country: String
+}
+
+struct WeatherAPIResponse: Decodable {
+    let location: LocationData
+    let current: CurrentWeather
 }
