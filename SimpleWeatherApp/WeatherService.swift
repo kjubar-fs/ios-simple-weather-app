@@ -46,6 +46,7 @@ extension ViewController {
                 let region = decodedData.location.region
                 let country = decodedData.location.country
                 let locStr = city + ((!region.isEmpty && city.lowercased() != region.lowercased()) ? ", \(region)" : "") + ", \(country)"
+                self.savedLocations.append(locStr)
                 
                 // update the UI with the info
                 // use the DispatchQueue to update on the main thread

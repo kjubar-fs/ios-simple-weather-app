@@ -46,6 +46,9 @@ class ViewController: UIViewController {
     var btnSelectedStyle: UIButton.Configuration = .filled()
     var btnDeselectedStyle: UIButton.Configuration = .gray()
     
+    // saved cities/locations
+    var savedLocations: [String] = []
+    
     // MARK: - VC load
     
     override func viewDidLoad() {
@@ -163,6 +166,16 @@ class ViewController: UIViewController {
         // update display mode flag and refresh UI
         displayTempInC = inCelsius
         updateWeatherDisplay()
+    }
+    
+    /// Prepare to perform a segue.
+    /// Handles passing in list of saved cities to the second screen.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "viewCityList") {
+            if let dest = segue.destination as? CityListViewController {
+                dest.cityList = savedLocations
+            }
+        }
     }
 }
 

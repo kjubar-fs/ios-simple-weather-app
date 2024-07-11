@@ -21,6 +21,9 @@
                                 <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="View Cities"/>
+                                <connections>
+                                    <segue destination="BHB-fT-Qzq" kind="show" identifier="viewCityList" id="vxj-P3-TRv"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Weather" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bi8-PU-mZU">
                                 <rect key="frame" x="234.66666666666666" y="102.66666666666667" width="126.33333333333334" height="35.000000000000014"/>
@@ -144,6 +147,22 @@
                 </textField>
             </objects>
             <point key="canvasLocation" x="374.80916030534348" y="-14.084507042253522"/>
+        </scene>
+        <!--Saved Cities-->
+        <scene sceneID="DXZ-5Q-xA4">
+            <objects>
+                <viewController id="BHB-fT-Qzq" customClass="CityListViewController" customModule="SimpleWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="216-cw-Bnh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="s7o-ai-21q"/>
+                        <color key="backgroundColor" name="bgColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Saved Cities" id="UV4-yf-2Gb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wLO-Jh-7ld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="-14"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yYJ-sw-2jJ">

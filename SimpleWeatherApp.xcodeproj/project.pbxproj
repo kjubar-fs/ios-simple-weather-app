@@ -15,6 +15,7 @@
 		D9091F142C3DB3AD00A3410D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9091F132C3DB3AD00A3410D /* Assets.xcassets */; };
 		D9091F172C3DB3AD00A3410D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D9091F162C3DB3AD00A3410D /* Base */; };
 		D9091F212C4070CE00A3410D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9091F202C4070CE00A3410D /* WeatherService.swift */; };
+		D9091F232C407A1A00A3410D /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9091F222C407A1A00A3410D /* CityListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D9091F162C3DB3AD00A3410D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9091F182C3DB3AD00A3410D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9091F202C4070CE00A3410D /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		D9091F222C407A1A00A3410D /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				D9091F0A2C3DB3AC00A3410D /* AppDelegate.swift */,
+				D9091F222C407A1A00A3410D /* CityListViewController.swift */,
 				D9091F0C2C3DB3AC00A3410D /* SceneDelegate.swift */,
 				D9091F0E2C3DB3AC00A3410D /* ViewController.swift */,
 				D9091F202C4070CE00A3410D /* WeatherService.swift */,
@@ -149,6 +152,7 @@
 				D9091F0B2C3DB3AC00A3410D /* AppDelegate.swift in Sources */,
 				D9091F0D2C3DB3AC00A3410D /* SceneDelegate.swift in Sources */,
 				48420E0A2C4077AA00209B68 /* WeatherUI.swift in Sources */,
+				D9091F232C407A1A00A3410D /* CityListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
