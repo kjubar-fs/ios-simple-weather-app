@@ -127,11 +127,21 @@
                         <outlet property="curTempStackView" destination="p1y-yv-9fI" id="zDJ-a9-vsa"/>
                         <outlet property="curWeatherImageView" destination="Klg-BF-AT2" id="ccy-gV-mMZ"/>
                         <outlet property="curWeatherLabel" destination="bi8-PU-mZU" id="HPK-Oj-HhQ"/>
+                        <outlet property="locationSearchField" destination="Ho1-yZ-iZr" id="3o5-Um-PXe"/>
                         <outlet property="tempCButton" destination="E7D-JQ-ptM" id="vOP-xL-2dC"/>
                         <outlet property="tempFButton" destination="XPo-bF-wyZ" id="zfi-dr-eOU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Ho1-yZ-iZr">
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="VYd-gU-Gc4"/>
+                    </connections>
+                </textField>
             </objects>
             <point key="canvasLocation" x="374.80916030534348" y="-14.084507042253522"/>
         </scene>

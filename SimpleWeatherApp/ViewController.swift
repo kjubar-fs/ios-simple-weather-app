@@ -10,7 +10,10 @@ import CoreLocation
 
 class ViewController: UIViewController {
     // MARK: - outlets and class variables
-
+    
+    // search bar View
+    @IBOutlet weak var locationSearchField: UITextField!
+    
     // weather display Views
     @IBOutlet weak var curWeatherLabel: UILabel!
     @IBOutlet weak var curWeatherImageView: UIImageView!
@@ -51,6 +54,8 @@ class ViewController: UIViewController {
         
         // add items to the navbar for the home screen (location, search)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location.square.fill"), style: .plain, target: self, action: #selector(locationBtnPressed))
+        navigationItem.titleView = locationSearchField
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(doLocationSearch))
         
         // set up location manager
         locationMgr = CLLocationManager()
@@ -99,6 +104,12 @@ class ViewController: UIViewController {
     /// Call this when switching to a static location instead of the user's location.
     func stopUpdatingLocation() {
         locationMgr?.stopUpdatingLocation()
+    }
+    
+    /// Function for when search button is pressed, or the user hits Enter in the search bar.
+    /// Takes the city from the search bar and looks up the weather for it, and stores the location.
+    @objc func doLocationSearch() {
+        print("Searching for location...")
     }
     
     // MARK: - weather UI functions
@@ -268,6 +279,17 @@ extension ViewController: CLLocationManagerDelegate {
         
         // start the task to hit the API
         dataTask.resume()
+    }
+}
+
+// MARK: - search bar delegate functions
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Returning")
+        textField.resignFirstResponder()
+        doLocationSearch()
+        return true
     }
 }
 
