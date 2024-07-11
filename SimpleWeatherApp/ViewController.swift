@@ -110,6 +110,15 @@ class ViewController: UIViewController {
     /// Takes the city from the search bar and looks up the weather for it, and stores the location.
     @objc func doLocationSearch() {
         print("Searching for location...")
+        
+        guard let location = locationSearchField.text else {
+            return
+        }
+        
+        locationSearchField.resignFirstResponder()
+        locationSearchField.text = ""
+        stopUpdatingLocation()
+        getWeatherForLocation(location)
     }
     
     // MARK: - weather UI functions
@@ -228,57 +237,7 @@ extension ViewController: CLLocationManagerDelegate {
             return
         }
         
-        // attempt to make the API call URL
-        // if we can't make a URL for the API, return because we can't do anything
-        guard let url = URL(string: "https://api.weatherapi.com/v1/current.json?key=b8346bfb465743ed8f2172517241007&q=\(location.coordinate.latitude),\(location.coordinate.longitude)") else {
-            return
-        }
-        
-        // create the dataTask for querying the API
-        // takes a callback function to be executed when the task finishes, as it is async
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            // report any errors and quit if they exist
-            if let fetchErr = error {
-                print("Error calling API: \(fetchErr)")
-                return
-            }
-            
-            // quit if we got no data
-            guard let data = data else {
-                return
-            }
-            
-            // TODO: quit if API responds with not 200-299
-            
-            // create a JSON decoder for reading the response
-            let jsonDecoder = JSONDecoder()
-            do {
-                // attempt to decode the data
-                let decodedData: WeatherAPIResponse = try jsonDecoder.decode(WeatherAPIResponse.self, from: data)
-                
-                // pull out weather info from data
-                let code = decodedData.current.condition.code
-                let weatherDispName = decodedData.current.condition.text
-                let tempC = decodedData.current.temp_c
-                let tempF = decodedData.current.temp_f
-                let city = decodedData.location.name
-                let region = decodedData.location.region
-                let country = decodedData.location.country
-                
-                // update the UI with the info
-                // use the DispatchQueue to update on the main thread
-                DispatchQueue.main.async {
-                    self.setShowWeatherInfo(true)
-                    self.setWeatherInfo(weatherCode: code, weatherString: weatherDispName, tempC: tempC, tempF: tempF, location: "\(city), \(region), \(country)")
-                }
-            } catch {
-                // if we fail decoding, log the error
-                print(error)
-            }
-        }
-        
-        // start the task to hit the API
-        dataTask.resume()
+        getWeatherForLocation("\(location.coordinate.latitude),\(location.coordinate.longitude)")
     }
 }
 
@@ -287,35 +246,7 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("Returning")
-        textField.resignFirstResponder()
         doLocationSearch()
         return true
     }
-}
-
-// MARK: - weather API JSON structs
-
-/// Structs for decoding the API response data.
-/// These match the structure of the JSON data returned by the API.
-
-struct WeatherCondition: Decodable {
-    let text: String
-    let code: Int
-}
-
-struct CurrentWeather: Decodable {
-    let temp_c: Double
-    let temp_f: Double
-    let condition: WeatherCondition
-}
-
-struct LocationData: Decodable {
-    let name: String
-    let region: String
-    let country: String
-}
-
-struct WeatherAPIResponse: Decodable {
-    let location: LocationData
-    let current: CurrentWeather
 }
