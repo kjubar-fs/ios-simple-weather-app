@@ -27,17 +27,19 @@ extension ViewController {
         var iconName: String
         var palette: [UIColor]
         
-        // no weather
+        // MARK: no weather
         if (weather.contains("sunny")) {
             iconName = "sun.max.fill"
             palette = yellow
         }
+        // "clear" is only used for nighttime, so we can show a moon
         else if (weather.contains("clear")) {
             iconName = "moon.fill"
             palette = white
         }
         
-        // cloudy
+        // MARK: cloudy
+        // "partly cloudy" should take precedence over "cloudy"
         else if (weather.contains("partly cloudy")) {
             iconName = "cloud.sun.fill"
             palette = whiteYellow
@@ -50,19 +52,32 @@ extension ViewController {
             iconName = "smoke.fill"
             palette = gray
         }
+        // put "fog" here so we get the fog icon for "freezing fog"
+        else if (weather.contains("mist") || weather.contains("fog")) {
+            iconName = "cloud.fog.fill"
+            palette = grayLightgray
+        }
         
-        // rain
-        // TODO: "thunder" + "rain"
-        // TODO: "thunder" + "snow"
+        // MARK: rain
+        // make "thunder" with rain or snow take precedence over just "thunder" on its own
+        else if (weather.contains("thunder") && (weather.contains("rain") || weather.contains("snow"))) {
+            iconName = "cloud.bolt.rain.fill"
+            palette = whiteBlue
+        }
         else if (weather.contains("thunder")) {
             iconName = "cloud.bolt.fill"
             palette = whiteGray
         }
+        // check for "freezing" to make freezing rain take precedence over regular rain or drizzle
+        else if (weather.contains("freezing")) {
+            iconName = "cloud.sleet.fill"
+            palette = whiteBlue
+        }
+        // "heavy rain" takes precedence over "rain"
         else if (weather.contains("heavy rain")) {
             iconName = "cloud.heavyrain.fill"
             palette = whiteBlue
         }
-        // TODO: "freezing"
         else if (weather.contains("rain")) {
             iconName = "cloud.rain.fill"
             palette = whiteBlue
@@ -71,12 +86,8 @@ extension ViewController {
             iconName = "cloud.drizzle.fill"
             palette = whiteBlue
         }
-        else if (weather.contains("mist") || weather.contains("fog")) {
-            iconName = "cloud.fog.fill"
-            palette = grayLightgray
-        }
         
-        // snow
+        // MARK: snow
         else if (weather.contains("snow")) {
             iconName = "cloud.snow"
             palette = grayWhite
@@ -90,7 +101,7 @@ extension ViewController {
             palette = grayWhite
         }
         
-        // fallback to unknown
+        // MARK: fallback to unknown
         else {
             iconName = "questionmark"
             palette = white
