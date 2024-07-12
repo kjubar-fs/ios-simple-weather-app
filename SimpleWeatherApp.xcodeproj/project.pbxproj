@@ -17,6 +17,7 @@
 		D9091F172C3DB3AD00A3410D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D9091F162C3DB3AD00A3410D /* Base */; };
 		D9091F212C4070CE00A3410D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9091F202C4070CE00A3410D /* WeatherService.swift */; };
 		D9091F232C407A1A00A3410D /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9091F222C407A1A00A3410D /* CityListViewController.swift */; };
+		D96658D62C41BFF600A359E6 /* CityListViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96658D52C41BFF600A359E6 /* CityListViewTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D9091F182C3DB3AD00A3410D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9091F202C4070CE00A3410D /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		D9091F222C407A1A00A3410D /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
+		D96658D52C41BFF600A359E6 /* CityListViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				D9091F0A2C3DB3AC00A3410D /* AppDelegate.swift */,
 				D9091F222C407A1A00A3410D /* CityListViewController.swift */,
+				D96658D52C41BFF600A359E6 /* CityListViewTableCell.swift */,
 				48420E0B2C4091C100209B68 /* DrawWeatherIcon.swift */,
 				D9091F0C2C3DB3AC00A3410D /* SceneDelegate.swift */,
 				D9091F0E2C3DB3AC00A3410D /* ViewController.swift */,
@@ -156,6 +159,7 @@
 				D9091F0D2C3DB3AC00A3410D /* SceneDelegate.swift in Sources */,
 				48420E0A2C4077AA00209B68 /* WeatherUI.swift in Sources */,
 				D9091F232C407A1A00A3410D /* CityListViewController.swift in Sources */,
+				D96658D62C41BFF600A359E6 /* CityListViewTableCell.swift in Sources */,
 				48420E0C2C4091C100209B68 /* DrawWeatherIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

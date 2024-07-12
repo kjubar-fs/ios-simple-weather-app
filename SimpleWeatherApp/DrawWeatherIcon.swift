@@ -9,7 +9,7 @@ import UIKit
 
 extension ViewController {
     /// Given the weather display name from the API, return a UIImage representing the weather.
-    func getWeatherIcon(_ weatherName: String) -> UIImage? {
+    static func getWeatherIcon(_ weatherName: String) -> UIImage? {
         // lowercase the weather name input to check against
         let weather = weatherName.lowercased()
         

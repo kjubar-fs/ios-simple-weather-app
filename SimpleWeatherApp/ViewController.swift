@@ -184,8 +184,14 @@ class ViewController: UIViewController {
         if (segue.identifier == "viewCityList") {
             if let dest = segue.destination as? CityListViewController {
                 dest.locationList = savedLocations
+                dest.displayTempInC = displayTempInC
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = .none
+        navigationController?.navigationBar.tintColor = .accent
     }
 }
 

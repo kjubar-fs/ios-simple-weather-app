@@ -21,7 +21,7 @@ extension ViewController {
     func setWeatherInfo(weatherCode: Int, weatherString: String, tempC: Double, tempF: Double, location: String) {
         // store in variables
         weatherDispName = weatherString
-        weatherIcon = getWeatherIcon(weatherString)
+        weatherIcon = ViewController.getWeatherIcon(weatherString)
         weatherTempC = tempC
         weatherTempF = tempF
         locationStr = location
