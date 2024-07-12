@@ -86,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="635.66666666666663" width="393" height="34.333333333333371"/>
                                 <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="View Cities"/>
+                                <buttonConfiguration key="configuration" style="plain" title="View Saved Locations"/>
                                 <connections>
                                     <segue destination="BHB-fT-Qzq" kind="show" identifier="viewCityList" id="vxj-P3-TRv"/>
                                 </connections>
@@ -159,33 +159,32 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityListCell" id="9Jw-wl-7lN" customClass="CityListViewTableCell" customModule="SimpleWeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="140.33332824707031"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="141.66667175292969"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Jw-wl-7lN" id="dQM-ss-I4w">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="140.33332824707031"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="141.66667175292969"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l70-Zw-hf0">
-                                                    <rect key="frame" x="20" y="19.999999999999993" width="353" height="100.33333333333331"/>
+                                                    <rect key="frame" x="20" y="20.000000000000007" width="353" height="101.66666666666669"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HPr-5p-fK0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100.33333333333333" height="100.33333333333333"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="101.66666666666667"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="100" id="DKR-k4-yth"/>
                                                                 <constraint firstAttribute="width" secondItem="HPr-5p-fK0" secondAttribute="height" multiplier="1:1" id="qNG-Jk-taP"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zMs-0d-ffL">
-                                                            <rect key="frame" x="110.33333333333336" y="0.0" width="242.66666666666663" height="100.33333333333333"/>
+                                                            <rect key="frame" x="111.66666666666664" y="0.0" width="241.33333333333337" height="101.66666666666667"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRc-pX-8JS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="242.66666666666666" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="241.33333333333334" height="24"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="weather" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGk-s5-QaA">
-                                                                    <rect key="frame" x="0.0" y="24" width="242.66666666666666" height="76.333333333333329"/>
+                                                                    <rect key="frame" x="0.0" y="24" width="241.33333333333334" height="77.666666666666671"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -228,7 +227,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Saved Cities" id="e7F-or-zNk">
+                                    <navigationItem title="Saved Locations" id="e7F-or-zNk">
                                         <barButtonItem key="backBarButtonItem" title="Back" id="qZW-4g-OhA"/>
                                     </navigationItem>
                                 </items>
