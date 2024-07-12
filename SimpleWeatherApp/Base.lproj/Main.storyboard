@@ -16,39 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGf-U3-0zW">
-                                <rect key="frame" x="24" y="103" width="108" height="34.333333333333343"/>
-                                <color key="tintColor" name="AccentColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="View Cities"/>
-                                <connections>
-                                    <segue destination="BHB-fT-Qzq" kind="show" identifier="viewCityList" id="vxj-P3-TRv"/>
-                                </connections>
-                            </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Weather" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bi8-PU-mZU">
-                                <rect key="frame" x="234.66666666666666" y="102.66666666666667" width="126.33333333333334" height="35.000000000000014"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="ZRc-Yh-5QR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="lQG-at-FkY">
-                                <rect key="frame" x="0.0" y="590" width="393" height="262"/>
+                                <rect key="frame" x="0.0" y="680" width="393" height="262"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lQG-at-FkY" secondAttribute="height" multiplier="3:2" id="Fdv-h8-kNK"/>
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Klg-BF-AT2">
-                                <rect key="frame" x="98.666666666666686" y="163" width="196" height="196"/>
+                                <rect key="frame" x="98.666666666666686" y="173.33333333333337" width="196" height="196"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Klg-BF-AT2" secondAttribute="height" multiplier="1:1" id="7Ll-tf-atH"/>
                                     <constraint firstAttribute="height" constant="196" id="DsP-rC-mXX"/>
                                 </constraints>
                             </imageView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="p1y-yv-9fI">
-                                <rect key="frame" x="120.33333333333333" y="399" width="152.66666666666669" height="110"/>
+                                <rect key="frame" x="120.33333333333333" y="409.33333333333331" width="152.66666666666669" height="109.99999999999994"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="temp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbh-pE-zci">
                                         <rect key="frame" x="0.0" y="0.0" width="87.666666666666671" height="110"/>
@@ -95,8 +77,23 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rd-PJ-pMK">
-                                <rect key="frame" x="20" y="529" width="353" height="24"/>
+                                <rect key="frame" x="20" y="539.33333333333337" width="353" height="24"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGf-U3-0zW">
+                                <rect key="frame" x="0.0" y="635.66666666666663" width="393" height="34.333333333333371"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="View Cities"/>
+                                <connections>
+                                    <segue destination="BHB-fT-Qzq" kind="show" identifier="viewCityList" id="vxj-P3-TRv"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Weather" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bi8-PU-mZU">
+                                <rect key="frame" x="10" y="122.99999999999999" width="373" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -106,21 +103,22 @@
                         <constraints>
                             <constraint firstItem="lQG-at-FkY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3DL-6H-NAk"/>
                             <constraint firstItem="p1y-yv-9fI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5HA-QE-Jea"/>
-                            <constraint firstItem="bi8-PU-mZU" firstAttribute="centerY" secondItem="pGf-U3-0zW" secondAttribute="centerY" id="8YB-7s-aVU"/>
                             <constraint firstItem="4rd-PJ-pMK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="D7A-Em-TpE"/>
+                            <constraint firstItem="bi8-PU-mZU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-10" id="DOr-xe-Sua"/>
+                            <constraint firstItem="lQG-at-FkY" firstAttribute="top" secondItem="pGf-U3-0zW" secondAttribute="bottom" constant="10" id="EEM-fO-N74"/>
                             <constraint firstItem="p1y-yv-9fI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kqr-Hn-2AZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bi8-PU-mZU" secondAttribute="trailing" constant="32" id="LML-HM-3Nd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4rd-PJ-pMK" secondAttribute="trailing" constant="20" id="PMf-oH-yAP"/>
+                            <constraint firstItem="pGf-U3-0zW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Swi-xW-jiB"/>
                             <constraint firstItem="Klg-BF-AT2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TA0-Ti-7TD"/>
                             <constraint firstItem="4rd-PJ-pMK" firstAttribute="top" secondItem="p1y-yv-9fI" secondAttribute="bottom" constant="20" id="VBj-u4-jOO"/>
-                            <constraint firstAttribute="bottom" secondItem="lQG-at-FkY" secondAttribute="bottom" id="YU6-x3-rtm"/>
+                            <constraint firstAttribute="bottom" secondItem="lQG-at-FkY" secondAttribute="bottom" constant="-90" id="YU6-x3-rtm"/>
+                            <constraint firstItem="bi8-PU-mZU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="aCO-Lo-Rhq"/>
+                            <constraint firstItem="bi8-PU-mZU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="aYz-TY-eVI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p1y-yv-9fI" secondAttribute="trailing" constant="20" id="btb-g8-lHe"/>
                             <constraint firstItem="lQG-at-FkY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="eQm-le-Be2"/>
-                            <constraint firstItem="pGf-U3-0zW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="fEb-It-6sc"/>
                             <constraint firstItem="p1y-yv-9fI" firstAttribute="top" secondItem="Klg-BF-AT2" secondAttribute="bottom" constant="40" id="kq8-IK-wV1"/>
-                            <constraint firstItem="bi8-PU-mZU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pGf-U3-0zW" secondAttribute="trailing" constant="10" id="lbf-cR-YBt"/>
-                            <constraint firstItem="Klg-BF-AT2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="yvr-Ax-Wgw"/>
-                            <constraint firstItem="pGf-U3-0zW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zmX-MV-gbg"/>
+                            <constraint firstItem="Klg-BF-AT2" firstAttribute="top" secondItem="bi8-PU-mZU" secondAttribute="bottom" constant="30" id="lmx-dF-qv2"/>
+                            <constraint firstItem="pGf-U3-0zW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="taR-eV-lPE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mXe-h4-spz"/>
@@ -245,6 +243,7 @@
                             <constraint firstItem="DdR-Z8-HG1" firstAttribute="top" secondItem="s7o-ai-21q" secondAttribute="top" id="H73-go-Lwf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jZD-9I-uZ2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLO-Jh-7ld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
