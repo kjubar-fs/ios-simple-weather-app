@@ -26,7 +26,7 @@ class CityListViewController: UIViewController {
 
 extension CityListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 160
     }
 }
 
