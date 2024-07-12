@@ -78,6 +78,16 @@ class ViewController: UIViewController {
         
         tempCButton.configuration = initCBtnStyle
         tempFButton.configuration = initFBtnStyle
+        
+        // set up the intro text for when the app is first opened
+        // adapted from https://stackoverflow.com/questions/75513158/how-do-you-add-an-image-attachment-to-an-attributedstring
+        let introIcon = NSTextAttachment(image: UIImage(systemName: "location.square.fill")!)
+        let iconPlaceholder = "ICON"
+        let introLabel = "Search for a location or tap \(iconPlaceholder) to begin."
+        
+        let attributedString = NSMutableAttributedString(string: introLabel)
+        attributedString.replaceCharacters(in: (attributedString.string as NSString).range(of: iconPlaceholder), with: NSAttributedString(attachment: introIcon))
+        curLocLabel.attributedText = attributedString
     }
     
     // MARK: - location functions
