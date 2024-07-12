@@ -7,41 +7,39 @@
 
 import UIKit
 
-extension ViewController{
-    
-    /// Given a weather code from the API, return a tuple with the display-friendly name and an icon.
-    func lookupWeatherCode(_ code: Int) -> UIImage? {
+extension ViewController {
+    /// Given the weather display name from the API, return a UIImage representing the weather.
+    func getWeatherIcon(_ weatherName: String) -> UIImage? {
         // if string contains ..... assign associated icon and color
+        let weather = weatherName.lowercased()
         
-        let weather = weatherDispName?.lowercased()
-        
-        if(weather?.contains("sunny") ?? false){
+        if(weather.contains("sunny")) {
             return UIImage(systemName: "sun.max.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemYellow]))
-        } else if(weather?.contains("partly cloudy") ?? false){
+        } else if(weather.contains("partly cloudy")) {
             return UIImage(systemName: "cloud.sun.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .systemYellow]))
-        } else if(weather?.contains("rain") ?? false){
+        } else if(weather.contains("rain")) {
             return UIImage(systemName: "cloud.rain.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .systemBlue]))
-        } else if(weather?.contains("overcast") ?? false){
+        } else if(weather.contains("overcast")) {
             return UIImage(systemName: "smoke.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemGray]))
-        } else if(weather?.contains("clear") ?? false){
+        } else if(weather.contains("clear")) {
             return UIImage(systemName: "sun.max.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemYellow]))
-        } else if(weather?.contains("drizzle") ?? false){
+        } else if(weather.contains("drizzle")) {
             return UIImage(systemName: "cloud.drizzle.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .systemBlue]))
-        } else if(weather?.contains("mist") ?? false || weather?.contains("fog") ?? false){
+        } else if(weather.contains("mist") || weather.contains("fog")) {
             return UIImage(systemName: "cloud.fog.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemGray, .lightGray]))
-        } else if(weather?.contains("cloudy") ?? false){
+        } else if(weather.contains("cloudy")) {
             return UIImage(systemName: "cloud.fog.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemGray, .lightGray]))
-        } else if(weather?.contains("snow") ?? false){
+        } else if(weather.contains("snow")) {
             return UIImage(systemName: "cloud.snow", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemGray, .white]))
-        } else if(weather?.contains("sleet") ?? false || weather?.contains("ice pellets") ?? false){
+        } else if(weather.contains("sleet") || weather.contains("ice pellets")) {
             return UIImage(systemName: "cloud.sleet.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .systemBlue]))
-        } else if(weather?.contains("thunder") ?? false){
+        } else if(weather.contains("thunder")) {
             return UIImage(systemName: "cloud.bolt.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .gray]))
-        } else if(weather?.contains("blizzard") ?? false){
+        } else if(weather.contains("blizzard")) {
             return UIImage(systemName: "wind.snow", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.gray, .white]))
-        } else if(weather?.contains("heavy rain") ?? false){
+        } else if(weather.contains("heavy rain")) {
             return UIImage(systemName: "cloud.heavyrain.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .cyan]))
-        }  else {
+        } else {
             return UIImage(systemName: "questionmark", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemYellow]))
         }
     }
