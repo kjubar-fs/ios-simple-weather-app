@@ -15,10 +15,6 @@ class CityListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if let list = locationList {
-            print(list)
-        }
-        
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.tintColor = .white
     }

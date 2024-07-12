@@ -122,8 +122,6 @@ class ViewController: UIViewController {
     /// Function for when search button is pressed, or the user hits Enter in the search bar.
     /// Takes the city from the search bar and looks up the weather for it, and stores the location.
     @objc func doLocationSearch() {
-        print("Searching for location...")
-        
         guard let location = locationSearchField.text else {
             return
         }
@@ -235,7 +233,6 @@ extension ViewController: CLLocationManagerDelegate {
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("Returning")
         doLocationSearch()
         return true
     }
