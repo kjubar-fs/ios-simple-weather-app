@@ -16,6 +16,7 @@ extension ViewController {
         // color palette arrays
         let yellow: [UIColor] = [.systemYellow]
         let gray: [UIColor] = [.systemGray]
+        let white: [UIColor] = [.white]
         let whiteYellow: [UIColor] = [.white, .systemYellow]
         let whiteBlue: [UIColor] = [.white, .systemBlue]
         let grayLightgray: [UIColor] = [.systemGray, .lightGray]
@@ -23,34 +24,78 @@ extension ViewController {
         let whiteGray: [UIColor] = grayWhite.reversed()
         
         // determine icon based on weather string contents
-        if(weather.contains("sunny")) {
-            return UIImage(systemName: "sun.max.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: yellow))
-        } else if(weather.contains("partly cloudy")) {
-            return UIImage(systemName: "cloud.sun.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: whiteYellow))
-        } else if(weather.contains("rain")) {
-            return UIImage(systemName: "cloud.rain.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: whiteBlue))
-        } else if(weather.contains("overcast")) {
-            return UIImage(systemName: "smoke.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: gray))
-        } else if(weather.contains("clear")) {
-            return UIImage(systemName: "sun.max.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: yellow))
-        } else if(weather.contains("drizzle")) {
-            return UIImage(systemName: "cloud.drizzle.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: whiteBlue))
-        } else if(weather.contains("mist") || weather.contains("fog")) {
-            return UIImage(systemName: "cloud.fog.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: grayLightgray))
-        } else if(weather.contains("cloudy")) {
-            return UIImage(systemName: "cloud.fog.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: grayLightgray))
-        } else if(weather.contains("snow")) {
-            return UIImage(systemName: "cloud.snow", withConfiguration: UIImage.SymbolConfiguration(paletteColors: grayWhite))
-        } else if(weather.contains("sleet") || weather.contains("ice pellets")) {
-            return UIImage(systemName: "cloud.sleet.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: whiteBlue))
-        } else if(weather.contains("thunder")) {
-            return UIImage(systemName: "cloud.bolt.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: whiteGray))
-        } else if(weather.contains("blizzard")) {
-            return UIImage(systemName: "wind.snow", withConfiguration: UIImage.SymbolConfiguration(paletteColors: grayWhite))
-        } else if(weather.contains("heavy rain")) {
-            return UIImage(systemName: "cloud.heavyrain.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: whiteBlue))
-        } else {
-            return UIImage(systemName: "questionmark", withConfiguration: UIImage.SymbolConfiguration(paletteColors: yellow))
+        var iconName: String
+        var palette: [UIColor]
+        
+        // no weather
+        if (weather.contains("sunny")) {
+            iconName = "sun.max.fill"
+            palette = yellow
         }
+        else if (weather.contains("clear")) {
+            iconName = "moon.fill"
+            palette = white
+        }
+        
+        // cloudy
+        else if (weather.contains("partly cloudy")) {
+            iconName = "cloud.sun.fill"
+            palette = whiteYellow
+        }
+        else if (weather.contains("cloudy")) {
+            iconName = "cloud.fog.fill"
+            palette = grayLightgray
+        }
+        else if (weather.contains("overcast")) {
+            iconName = "smoke.fill"
+            palette = gray
+        }
+        
+        // rain
+        // TODO: "thunder" + "rain"
+        // TODO: "thunder" + "snow"
+        else if (weather.contains("thunder")) {
+            iconName = "cloud.bolt.fill"
+            palette = whiteGray
+        }
+        else if (weather.contains("heavy rain")) {
+            iconName = "cloud.heavyrain.fill"
+            palette = whiteBlue
+        }
+        // TODO: "freezing"
+        else if (weather.contains("rain")) {
+            iconName = "cloud.rain.fill"
+            palette = whiteBlue
+        }
+        else if (weather.contains("drizzle")) {
+            iconName = "cloud.drizzle.fill"
+            palette = whiteBlue
+        }
+        else if (weather.contains("mist") || weather.contains("fog")) {
+            iconName = "cloud.fog.fill"
+            palette = grayLightgray
+        }
+        
+        // snow
+        else if (weather.contains("snow")) {
+            iconName = "cloud.snow"
+            palette = grayWhite
+        }
+        else if (weather.contains("sleet") || weather.contains("ice pellets")) {
+            iconName = "cloud.sleet.fill"
+            palette = whiteBlue
+        }
+        else if (weather.contains("blizzard")) {
+            iconName = "wind.snow"
+            palette = grayWhite
+        }
+        
+        // fallback to unknown
+        else {
+            iconName = "questionmark"
+            palette = white
+        }
+        
+        return UIImage(systemName: iconName, withConfiguration: UIImage.SymbolConfiguration(paletteColors: palette))
     }
 }
