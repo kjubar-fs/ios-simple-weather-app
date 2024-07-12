@@ -30,12 +30,7 @@ extension ViewController {
         updateWeatherDisplay()
     }
     
-    /// Given a weather code from the API, return a tuple with the display-friendly name and an icon.
-    func lookupWeatherCode(_ code: Int) -> UIImage? {
-        // TODO: implement
-        
-        return UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal)
-    }
+
     
     /// Update the display views for the weather info with the info in the class.
     func updateWeatherDisplay() {

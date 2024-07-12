@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		48420E0A2C4077AA00209B68 /* WeatherUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48420E092C4077AA00209B68 /* WeatherUI.swift */; };
+		48420E0C2C4091C100209B68 /* DrawWeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48420E0B2C4091C100209B68 /* DrawWeatherIcon.swift */; };
 		D9091F0B2C3DB3AC00A3410D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9091F0A2C3DB3AC00A3410D /* AppDelegate.swift */; };
 		D9091F0D2C3DB3AC00A3410D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9091F0C2C3DB3AC00A3410D /* SceneDelegate.swift */; };
 		D9091F0F2C3DB3AC00A3410D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9091F0E2C3DB3AC00A3410D /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		48420E092C4077AA00209B68 /* WeatherUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUI.swift; sourceTree = "<group>"; };
+		48420E0B2C4091C100209B68 /* DrawWeatherIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawWeatherIcon.swift; sourceTree = "<group>"; };
 		D9091F072C3DB3AC00A3410D /* SimpleWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9091F0A2C3DB3AC00A3410D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9091F0C2C3DB3AC00A3410D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				D9091F0A2C3DB3AC00A3410D /* AppDelegate.swift */,
 				D9091F222C407A1A00A3410D /* CityListViewController.swift */,
+				48420E0B2C4091C100209B68 /* DrawWeatherIcon.swift */,
 				D9091F0C2C3DB3AC00A3410D /* SceneDelegate.swift */,
 				D9091F0E2C3DB3AC00A3410D /* ViewController.swift */,
 				D9091F202C4070CE00A3410D /* WeatherService.swift */,
@@ -153,6 +156,7 @@
 				D9091F0D2C3DB3AC00A3410D /* SceneDelegate.swift in Sources */,
 				48420E0A2C4077AA00209B68 /* WeatherUI.swift in Sources */,
 				D9091F232C407A1A00A3410D /* CityListViewController.swift in Sources */,
+				48420E0C2C4091C100209B68 /* DrawWeatherIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
