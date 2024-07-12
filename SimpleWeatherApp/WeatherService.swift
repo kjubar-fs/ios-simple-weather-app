@@ -24,12 +24,19 @@ extension ViewController {
                 return
             }
             
+            // quit if API responds with not 200-299
+            if let httpResp = response as? HTTPURLResponse {
+                let respCode = httpResp.statusCode
+                if (respCode < 200 || respCode >= 300) {
+                    print("API responded with failure code: \(respCode) \(HTTPURLResponse.localizedString(forStatusCode: respCode))")
+                    return
+                }
+            }
+            
             // quit if we got no data
             guard let data = data else {
                 return
             }
-            
-            // TODO: quit if API responds with not 200-299
             
             // create a JSON decoder for reading the response
             let jsonDecoder = JSONDecoder()
@@ -59,7 +66,7 @@ extension ViewController {
                 }
             } catch {
                 // if we fail decoding, log the error
-                print(error)
+                print("Failed parsing API response to JSON: \(error)")
             }
         }
         
