@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     var btnDeselectedStyle: UIButton.Configuration = .gray()
     
     // saved cities/locations
-    var savedLocations: [String] = []
+    var savedLocations: [WeatherAPIResponse] = []
     
     // MARK: - VC load
     
@@ -183,7 +183,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "viewCityList") {
             if let dest = segue.destination as? CityListViewController {
-                dest.cityList = savedLocations
+                dest.locationList = savedLocations
             }
         }
     }

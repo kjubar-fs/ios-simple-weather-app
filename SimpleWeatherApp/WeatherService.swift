@@ -46,7 +46,10 @@ extension ViewController {
                 let region = decodedData.location.region
                 let country = decodedData.location.country
                 let locStr = city + ((!region.isEmpty && city.lowercased() != region.lowercased()) ? ", \(region)" : "") + ", \(country)"
-                self.savedLocations.append(locStr)
+                // save the location if it isn't in our list already
+                if (!self.savedLocations.contains(decodedData)) {
+                    self.savedLocations.append(decodedData)
+                }
                 
                 // update the UI with the info
                 // use the DispatchQueue to update on the main thread
@@ -84,16 +87,24 @@ struct CurrentWeather: Decodable {
 struct LocationData: Decodable {
     let name: String
     let region: String
-    let country: String
-}
+    let country: String}
 
 struct APIError: Decodable {
     let code: Int
     let message: String
 }
 
-struct WeatherAPIResponse: Decodable {
+struct WeatherAPIResponse: Decodable, Equatable {
     let location: LocationData
     let current: CurrentWeather
     let error: APIError?
+    
+    /// Implementation of == for the Equatable protocol to use .contains() on our data list.
+    /// Two WeatherAPIResponses are considered equal /only/ if they refer to the same location.
+    static func == (lhs: WeatherAPIResponse, rhs: WeatherAPIResponse) -> Bool {
+        return lhs.location.name == rhs.location.name &&
+                lhs.location.region == rhs.location.region &&
+                lhs.location.country == rhs.location.country
+    }
+
 }

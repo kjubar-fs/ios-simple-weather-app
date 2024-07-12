@@ -8,13 +8,13 @@
 import UIKit
 
 class CityListViewController: UIViewController {
-    var cityList: [String]?
+    var locationList: [WeatherAPIResponse]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if let list = cityList {
+        if let list = locationList {
             print(list)
         }
     }
