@@ -25,9 +25,10 @@ extension ViewController {
             }
             
             // quit if API responds with not 200-299
+            // continue if it responded with error 400, as the API returns a message with the error and we want to log that instead
             if let httpResp = response as? HTTPURLResponse {
                 let respCode = httpResp.statusCode
-                if (respCode < 200 || respCode >= 300) {
+                if ((respCode < 200 || respCode >= 300) && respCode != 400) {
                     print("API responded with failure code: \(respCode) \(HTTPURLResponse.localizedString(forStatusCode: respCode))")
                     return
                 }
