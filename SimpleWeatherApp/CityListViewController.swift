@@ -8,7 +8,7 @@
 import UIKit
 
 class CityListViewController: UIViewController {
-    var locationList: [WeatherAPIResponse]?
+    var locationList: [WeatherAPIRespData]?
     var displayTempInC: Bool?
 
     override func viewDidLoad() {

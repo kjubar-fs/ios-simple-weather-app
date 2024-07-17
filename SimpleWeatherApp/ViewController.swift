@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     var btnDeselectedStyle: UIButton.Configuration = .gray()
     
     // saved cities/locations
-    var savedLocations: [WeatherAPIResponse] = []
+    var savedLocations: [WeatherAPIRespData] = []
     
     // MARK: - VC load
     

@@ -44,18 +44,30 @@ extension ViewController {
                 // attempt to decode the data
                 let decodedData: WeatherAPIResponse = try jsonDecoder.decode(WeatherAPIResponse.self, from: data)
                 
+                if let apiErr = decodedData.error {
+                    print("API error: \(apiErr.message)")
+                    return
+                }
+                
+                guard let apiCurrent = decodedData.current,
+                      let apiLocation = decodedData.location else {
+                    print("Unknown API error: response had no error code and also did not provide current weather info.")
+                    return
+                }
+                let apiResp = WeatherAPIRespData(location: apiLocation, current: apiCurrent)
+                
                 // pull out weather info from data
-                let code = decodedData.current.condition.code
-                let weatherDispName = decodedData.current.condition.text
-                let tempC = decodedData.current.temp_c
-                let tempF = decodedData.current.temp_f
-                let city = decodedData.location.name
-                let region = decodedData.location.region
-                let country = decodedData.location.country
+                let code = apiResp.current.condition.code
+                let weatherDispName = apiResp.current.condition.text
+                let tempC = apiResp.current.temp_c
+                let tempF = apiResp.current.temp_f
+                let city = apiResp.location.name
+                let region = apiResp.location.region
+                let country = apiResp.location.country
                 let locStr = city + ((!region.isEmpty && city.lowercased() != region.lowercased()) ? ", \(region)" : "") + ", \(country)"
                 // save the location if it isn't in our list already
-                if (!self.savedLocations.contains(decodedData)) {
-                    self.savedLocations.append(decodedData)
+                if (!self.savedLocations.contains(apiResp)) {
+                    self.savedLocations.append(apiResp)
                 }
                 
                 // update the UI with the info
@@ -101,17 +113,21 @@ struct APIError: Decodable {
     let message: String
 }
 
-struct WeatherAPIResponse: Decodable, Equatable {
-    let location: LocationData
-    let current: CurrentWeather
-    let error: APIError?
+struct WeatherAPIRespData: Equatable {
+    var location: LocationData
+    var current: CurrentWeather
     
     /// Implementation of == for the Equatable protocol to use .contains() on our data list.
     /// Two WeatherAPIResponses are considered equal /only/ if they refer to the same location.
-    static func == (lhs: WeatherAPIResponse, rhs: WeatherAPIResponse) -> Bool {
+    static func == (lhs: WeatherAPIRespData, rhs: WeatherAPIRespData) -> Bool {
         return lhs.location.name == rhs.location.name &&
                 lhs.location.region == rhs.location.region &&
                 lhs.location.country == rhs.location.country
     }
+}
 
+struct WeatherAPIResponse: Decodable {
+    let location: LocationData?
+    let current: CurrentWeather?
+    let error: APIError?
 }
